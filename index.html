@@ -4,141 +4,149 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
   <title>Lanni Bu</title>
   <style>
-  body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
+  * {
     margin: 0;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(180deg, #e9f3ff 0%, #fdfcff 100%); /* baby blue 背景 */
+    padding: 0;
+    box-sizing: border-box;
   }
 
+  body {
+    font-family: "Didact Gothic", sans-serif;
+    color: #333;
+    background: linear-gradient(180deg, #eef6ff 0%, #ffffff 100%);
+    min-height: 100vh;
+  }
 
-  header {
+  /* Navigation */
+  nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: linear-gradient(90deg, #dae7ff 0%, #f4e6ff 100%);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    z-index: 10;
-  }
-
-  nav {
+    background: #ffffff;
+    border-bottom: 1px solid #d0e3f5;
+    z-index: 100;
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    padding: 15px 0;
   }
 
   nav a {
-    margin: 0 15px;
+    margin: 0 20px;
     text-decoration: none;
-    color: #5b6fb4; 
+    color: #4a90c2;
     font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
     transition: color 0.3s ease;
   }
 
-  nav a:hover {
-    color: #c58fcf; 
+  nav a:hover, nav a.active {
+    color: #2b6ca3;
   }
 
-  main {
-    display: flex;
-    margin-top: 70px;
+  /* Page container */
+  .page {
+    display: none;
+    min-height: 100vh;
+    padding: 80px 50px 50px 50px;
+    max-width: 900px;
+    margin: 0 auto;
   }
 
-
-  .sidebar {
-    width: 25%;
-    background: linear-gradient(180deg, #e6f0ff 0%, #f6f2ff 100%);
-    padding: 30px;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.05);
-    height: 100vh;
-    position: fixed;
-    overflow-y: auto;
+  .page.active {
+    display: block;
   }
 
-  .sidebar img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    border: 3px solid #e0e8ff;
+  /* Page header */
+  .page-header {
+    margin-bottom: 40px;
   }
 
-  .sidebar h1 {
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: #4a4e9e;
+  .page-header h1 {
+    font-size: 32px;
+    color: #3a7db8;
+    margin-bottom: 5px;
   }
 
-  .sidebar p {
-    font-size: 14px;
-    line-height: 1.4;
+  .page-header .chinese-name {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 20px;
   }
 
-  .sidebar a {
-    color: #6b74c2;
-    text-decoration: none;
-  }
-
-  .sidebar a:hover {
-    text-decoration: underline;
-    color: #c179b9;
-  }
-
-  .content {
-    margin-left: 28%;
-    padding: 40px;
-    max-width: 800px;
-  }
-
-  section {
-    margin-bottom: 60px;
-    background: #ffffffee;
-    border-radius: 12px;
-    padding: 20px 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    transition: transform 0.3s ease;
-  }
-
-  section:hover {
-    transform: translateY(-3px);
-  }
-
+  /* Section styling */
   h2 {
-    border-bottom: 2px solid #e0e8ff;
-    padding-bottom: 6px;
-    color: #5a50bf;
+    font-size: 22px;
+    color: #3a7db8;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #d0e3f5;
+  }
+
+  p {
+    line-height: 1.7;
+    margin-bottom: 15px;
   }
 
   ul {
-    line-height: 1.6;
+    line-height: 1.8;
+    margin-left: 20px;
   }
 
+  ul li {
+    margin-bottom: 12px;
+  }
+
+  /* About & Research page */
+  .intro {
+    font-size: 17px;
+    margin-bottom: 40px;
+  }
+
+  .intro a {
+    color: #4a90c2;
+    text-decoration: none;
+  }
+
+  .intro a:hover {
+    text-decoration: underline;
+  }
+
+  .research-section {
+    margin-top: 40px;
+  }
+
+  .research-list p {
+    margin-bottom: 8px;
+    padding-left: 10px;
+  }
+
+  /* Publication entries */
   .pub-entry {
-    background: #ffffffcc;
-    border-radius: 10px;
-    padding: 15px 18px;
-    margin-bottom: 22px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    transition: all 0.2s ease;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e8f0f6;
   }
 
-  .pub-entry:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  .pub-entry:last-child {
+    border-bottom: none;
   }
 
   .pub-title {
     font-size: 17px;
     font-weight: 600;
-    color: #2b4f8c;
+    font-style: italic;
+    color: #333;
     text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
   }
 
   .pub-title:hover {
-    color: #6d5ebf;
+    color: #555;
     text-decoration: underline;
   }
 
@@ -146,138 +154,168 @@
     font-weight: 500;
   }
 
-  .pub-buttons {
-    margin-top: 8px;
+  .pub-venue {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
   }
 
-  .pub-buttons a {
+  .pub-links {
+    margin-top: 10px;
+  }
+
+  .pub-links a {
     text-decoration: none;
     font-size: 13px;
-    padding: 3px 10px;
-    border-radius: 6px;
-    color: white;
-    font-weight: 500;
-    margin-right: 6px;
-    transition: all 0.2s ease;
+    color: #8b5a2b;
+    font-weight: 600;
+    margin-right: 15px;
   }
 
-  .btn-pdf {
-    background-color: #ffb6c1; 
+  .pub-links a:hover {
+    text-decoration: underline;
+    color: #6b4423;
   }
 
-  .btn-code {
-    background-color: #a2cffe; 
+  /* CV page */
+  .cv-download {
+    margin-top: 20px;
   }
 
-  .pub-buttons a:hover {
-    filter: brightness(1.1);
+  .cv-download a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #8b5a2b;
+    font-weight: 600;
   }
 
-
-  #contact {
-    background: linear-gradient(180deg, #f8faff 0%, #fff5fa 100%);
+  .cv-download a:hover {
+    text-decoration: underline;
+    color: #6b4423;
   }
 
-  #contact p {
-    color: #5b5b8a;
-    font-weight: 500;
+  /* Contact page */
+  .contact-info {
+    font-size: 17px;
+  }
+
+  .contact-info a {
+    color: #4a90c2;
+    text-decoration: none;
+  }
+
+  .contact-info a:hover {
+    text-decoration: underline;
   }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="#bio">Bio</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#cv">CV</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <nav>
+    <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
+    <a onclick="showPage('publications')" id="nav-publications">Publications</a>
+    <a onclick="showPage('cv')" id="nav-cv">CV</a>
+    <a onclick="showPage('contact')" id="nav-contact">Contact</a>
+  </nav>
 
-  <main>
-    <div class="sidebar">
+  <!-- Home: About + Research -->
+  <div class="page active" id="page-home">
+    <div class="page-header">
       <h1>Bu Lan-Ni</h1>
-      <h1>卜澜霓</h1>
+      <div class="chinese-name">卜澜霓</div>
     </div>
 
-    <div class="content">
-      <section id="bio">
-        <h2>About</h2>
-        <p>I am a master's student in the Department of Linguistics at Georgetown University, working with Professor Amir Zeldes and Professor Ethan Gotlieb Wilcox.</p>
-      </section>
+    <p class="intro">I am a master's student in the Department of Linguistics at Georgetown University, working with Professor <a href="https://gucorpling.org/amir/" target="_blank">Amir Zeldes</a> and Professor <a href="https://wilcoxeg.github.io/" target="_blank">Ethan Gotlieb Wilcox</a>.</p>
 
-      <section id="research">
-        <h2>Research</h2>
-        <p>Broadly, my research focuses on discourse and cognitive modeling. 
-        My previous and ongoing work covers the following research directions:</p>
+    <div class="research-section">
+      <h2>Research</h2>
+      <p>Broadly, my research interests include:</p>
 
-        <ul>
-          <li><b>Language model evaluation</b><br>
-            • Designing benchmarks for discourse and linguistic understanding in large language models (LLMs).
-          </li>
-          <li><b>Cognitive modeling of language comprehension</b><br>
-            • Examining differences between humans and language models in reading-time measures and neural signals.<br>
-            • Using interpretability methods to investigate model–human differences in language comprehension (e.g., in memory constraints).<br>
-            • Improving language models so their language comprehension more closely mimics human cognition.
-          </li>
-        </ul>
-      </section>
-
-      <section id="publications">
-        <h2>Publications & Preprints</h2>
-
-        <div class="pub-entry">
-          <a href="https://arxiv.org/abs/2510.17013" target="_blank" class="pub-title">
-            DiscoTrack: A Multilingual LLM Benchmark for Discourse Tracking
-          </a><br>
-          <span class="pub-authors">Lanni Bu</span>, Lauren Levine, Amir Zeldes.<br>
-          <i>arXiv preprint, 2025.</i><br>
-          <div class="pub-buttons">
-            <a href="https://arxiv.org/abs/2510.17013" target="_blank" class="btn-pdf">PDF</a>
-            <a href="https://github.com/Lanni-ni/discotrack" target="_blank" class="btn-code">Code</a>
-          </div>
-        </div>
-
-        <div class="pub-entry">
-          <a href="https://aclanthology.org/2025.udw-1.6/" target="_blank" class="pub-title">
-            UD-English-CHILDES: A Collected Resource of Gold and Silver Universal Dependencies Trees for Child Language Interactions
-          </a><br>
-          Xiulin Yang, Zhuoxuan Ju, <span class="pub-authors">Lanni Bu</span>, Zoey Liu, Nathan Schneider.<br>
-          <i>Proceedings of the Workshop on Universal Dependencies (UDW) at SyntaxFest 2025.</i><br>
-          <div class="pub-buttons">
-            <a href="https://aclanthology.org/2025.udw-1.6/" target="_blank" class="btn-pdf">PDF</a>
-            <a href="https://github.com/UniversalDependencies/UD_English-CHILDES" target="_blank" class="btn-code">Resource</a>
-          </div>
-        </div>
-
-        <div class="pub-entry">
-          <a href="#" class="pub-title">
-            Dependency-Based and Constituency-Based Inductive Biases for BabyLM: Comparison and Analysis
-          </a><br>
-          Zhuoxuan Ju, <span class="pub-authors">Lanni Bu</span>, Dagny Whall, Vattana Chan.<br>
-          <i>Georgetown University, 2024.</i><br>
-          <div class="pub-buttons">
-            <a href="babylm_biases.pdf" target="_blank" class="btn-pdf">PDF</a>
-            <a href="poster.pdf" target="_blank" class="btn-code">Poster</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="cv">
-        <h2>Curriculum Vitae</h2>
-        <p>Download my full CV here:</p>
-        <div class="pub-buttons">
-          <a href="cv.pdf" target="_blank" class="btn-pdf">Download CV (PDF)</a>
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>lb1437@georgetown.edu</p>
-      </section>
+      <div class="research-list">
+        <p>– Developing computational models that approximate human real-time language processing.</p>
+        <p>– Understanding where human and LLM generalization diverge.</p>
+        <p>– Computational models of discourse, with a focus on salience.</p>
+      </div>
     </div>
-  </main>
+  </div>
+
+  <!-- Publications -->
+  <div class="page" id="page-publications">
+    <h2>Publications & Preprints</h2>
+
+    <div class="pub-entry">
+      <a href="https://lanni-ni.github.io/hsp2025.pdf" target="_blank" class="pub-title">What Transformer Attention Mechanism Provides the Best Fit for Human Reading Times?</a>
+      <div><span class="pub-authors">Lanni Bu</span>, Xiulin Yang, Christian Clark, Ethan Wilcox.</div>
+      <div class="pub-venue">Submitted to the 39th Annual Conference on Human Sentence Processing (under review).</div>
+      <div class="pub-links">
+        <a href="https://lanni-ni.github.io/hsp2025.pdf" target="_blank">PDF</a>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://arxiv.org/abs/2510.17013" target="_blank" class="pub-title">DiscoTrack: A Multilingual LLM Benchmark for Discourse Tracking</a>
+      <div><span class="pub-authors">Lanni Bu</span>, Lauren Levine, Amir Zeldes.</div>
+      <div class="pub-venue">arXiv preprint, 2025.</div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2510.17013" target="_blank">PDF</a>
+        <a href="https://github.com/Lanni-ni/discotrack" target="_blank">Code</a>
+      </div>
+    </div>
+
+    <div class="pub-entry">
+      <a href="https://aclanthology.org/2025.udw-1.6/" target="_blank" class="pub-title">UD-English-CHILDES: A Collected Resource of Gold and Silver Universal Dependencies Trees for Child Language Interactions</a>
+      <div>Xiulin Yang, Zhuoxuan Ju, <span class="pub-authors">Lanni Bu</span>, Zoey Liu, Nathan Schneider.</div>
+      <div class="pub-venue">Proceedings of the Workshop on Universal Dependencies (UDW) at SyntaxFest 2025.</div>
+      <div class="pub-links">
+        <a href="https://aclanthology.org/2025.udw-1.6/" target="_blank">PDF</a>
+        <a href="https://github.com/UniversalDependencies/UD_English-CHILDES" target="_blank">Resource</a>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 50px;">Other Projects</h2>
+
+    <div class="pub-entry">
+      <a href="https://lanni-ni.github.io/babylm_biases.pdf" target="_blank" class="pub-title">Dependency-Based and Constituency-Based Inductive Biases for BabyLM: Comparison and Analysis</a>
+      <div class="pub-venue">Final Project for Empirical Methods in Natural Language Processing, Georgetown University, 2024.</div>
+      <div class="pub-links">
+        <a href="https://lanni-ni.github.io/babylm_biases.pdf" target="_blank">PDF</a>
+        <a href="https://lanni-ni.github.io/poster.pdf" target="_blank">Poster</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV -->
+  <div class="page" id="page-cv">
+    <h2>Curriculum Vitae</h2>
+    <p>Download my full CV here:</p>
+    <div class="pub-links">
+      <a href="cv.pdf" target="_blank">CV</a>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="page" id="page-contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:lb1437@georgetown.edu">lb1437@georgetown.edu</a></p>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageName) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      // Remove active from all nav links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+      });
+      // Show selected page
+      document.getElementById('page-' + pageName).classList.add('active');
+      // Activate nav link
+      document.getElementById('nav-' + pageName).classList.add('active');
+    }
+  </script>
 </body>
 </html>

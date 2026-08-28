@@ -72,13 +72,13 @@
 
     /* Profile photo */
     .profile-photo {
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid #d0e3f5;
-  flex-shrink: 0;
-}
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid #d0e3f5;
+      flex-shrink: 0;
+    }
 
     .name-section h1 {
       font-size: 32px;
@@ -89,23 +89,6 @@
     .name-section .chinese-name {
       font-size: 24px;
       color: #666;
-    }
-
-    /* Page header */
-    .page-header {
-      margin-bottom: 40px;
-    }
-
-    .page-header h1 {
-      font-size: 32px;
-      color: #3a7db8;
-      margin-bottom: 5px;
-    }
-
-    .page-header .chinese-name {
-      font-size: 24px;
-      color: #666;
-      margin-bottom: 20px;
     }
 
     /* Section styling */
@@ -120,15 +103,6 @@
     p {
       line-height: 1.7;
       margin-bottom: 15px;
-    }
-
-    ul {
-      line-height: 1.8;
-      margin-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 12px;
     }
 
     /* About & Research page */
@@ -208,23 +182,6 @@
       color: #6b4423;
     }
 
-    /* /* CV page */
-    .cv-download {
-      margin-top: 20px;
-    }
-
-    .cv-download a {
-      text-decoration: none;
-      font-size: 15px;
-      color: #8b5a2b;
-      font-weight: 600;
-    }
-
-    .cv-download a:hover {
-      text-decoration: underline;
-      color: #6b4423;
-    } */
-
     /* Contact page */
     .contact-info {
       font-size: 17px;
@@ -256,8 +213,8 @@
       }
 
       .profile-photo {
-        width: 160px;
-        height: 160px;
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
@@ -268,21 +225,14 @@
   <nav>
     <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
     <a onclick="showPage('publications')" id="nav-publications">Publications</a>
-    <a onclick="showPage('cv')" id="nav-cv">CV</a>
     <a onclick="showPage('contact')" id="nav-contact">Contact</a>
   </nav>
-
 
   <!-- Home -->
   <div class="page active" id="page-home">
 
     <div class="home-header">
 
-      <!--
-        PROFILE PHOTO
-        Put your photo in the same folder as this HTML file
-        and name it: profile.jpg
-      -->
       <img
         src="profile.jpg"
         alt="Lanni Bu"
@@ -299,10 +249,7 @@
     <p class="intro">
       I am a first-year PhD student in the Department of Linguistics at
       The Ohio State University, working with Professor
-      <a
-        href="https://www.asc.ohio-state.edu/schuler.77/"
-        target="_blank"
-      >
+      <a href="https://www.asc.ohio-state.edu/schuler.77/" target="_blank">
         William Schuler
       </a>.
     </p>
@@ -316,7 +263,6 @@
       </p>
 
       <div class="research-list">
-
         <p>
           – Developing computational models that approximate human real-time language processing.
         </p>
@@ -328,13 +274,11 @@
         <p>
           – Computational models of discourse, with a focus on salience.
         </p>
-
       </div>
 
     </div>
 
   </div>
-
 
   <!-- Publications -->
   <div class="page" id="page-publications">
@@ -374,72 +318,43 @@
 
   </div>
 
-
-  <!-- CV -->
-  <div class="page" id="page-cv">
-
-    <h2>Curriculum Vitae</h2>
-
-    <p>
-      Download my full CV here:
-    </p>
-
-    <div class="pub-links">
-      <a href="cv.pdf" target="_blank">
-        CV
-      </a>
-    </div>
-
-  </div>
-
-
   <!-- Contact -->
   <div class="page" id="page-contact">
 
     <h2>Contact</h2>
 
     <div class="contact-info">
-
       <p>
         Email:
         <a href="mailto:bu.138@osu.edu">
           lastname.138@osu.edu
         </a>
       </p>
-
     </div>
 
   </div>
 
-
   <script>
-
     function showPage(pageName) {
 
-      // Hide all pages
       document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
       });
 
-      // Remove active state from navigation links
       document.querySelectorAll('nav a').forEach(link => {
         link.classList.remove('active');
       });
 
-      // Show selected page
       document
         .getElementById('page-' + pageName)
         .classList
         .add('active');
 
-      // Activate selected navigation link
       document
         .getElementById('nav-' + pageName)
         .classList
         .add('active');
-
     }
-
   </script>
 
 </body>
